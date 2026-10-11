@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+/* Brand values sampled from /public/logo.png; indigo ink is deliberately darkened. */
+:root {
+    --color-ink: #22254E;
+    --color-indigo: #444791;
+    --color-maroon: #A1282F;
+    --color-yellow: #F6C100;
+    --color-canvas: #FBFAF7;
+    --color-surface: #FFFFFF;
+    --color-slate: #526073;
+    --color-muted: #647084;
+    --color-border: #DDE1E9;
+    --color-success: #17633C;
+    --color-warning: #825600;
+    --color-error: #A62232;
+    --color-whatsapp: #25D366;
+    --color-whatsapp-hover: #1EBE5A;
+    --color-whatsapp-pressed: #128C7E;
+    --brand-yellow: var(--color-yellow);
+    --brand-navy: var(--color-ink);
+    --brand-teal: var(--color-indigo);
+    --radius-card: 1.375rem;
+    --radius-control: .875rem;
+    --shadow-card: 0 10px 35px rgb(34 37 78 / .075);
+    --space-section: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+@theme inline {
+    --color-ink: var(--color-ink);
+    --color-brand-indigo: var(--color-indigo);
+    --color-brand-maroon: var(--color-maroon);
+    --color-brand-yellow: var(--color-yellow);
+    --color-brand-navy: var(--color-ink);
+    --color-brand-blue: var(--color-indigo);
+    --color-canvas: var(--color-canvas);
+    --color-surface: var(--color-surface);
+    --color-slate-copy: var(--color-slate);
+    --color-brand-border: var(--color-border);
+    --color-success: var(--color-success);
+    --color-error: var(--color-error);
+    --font-sans: var(--font-inter);
+    --font-heading: var(--font-jakarta);
+    --radius-card: var(--radius-card);
+    --radius-control: var(--radius-control);
+    --shadow-card: var(--shadow-card);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 126px
+}
+
+body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    overflow-x: clip;
+    font-size: 16px
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-jakarta), system-ui, sans-serif;
+    letter-spacing: -.035em
+}
+
+:lang(hi) {
+    font-family: var(--font-devanagari), system-ui, sans-serif
+}
+
+.type-display {
+    font-size: clamp(2.65rem, 5.5vw, 5rem);
+    line-height: 1.075;
+    letter-spacing: -.052em
+}
+
+.type-h1 {
+    font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+    line-height: 1.1
+}
+
+.type-h2 {
+    font-size: clamp(1.85rem, 3.2vw, 3rem);
+    line-height: 1.14
+}
+
+.type-h3 {
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.22
+}
+
+.type-h4 {
+    font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+    line-height: 1.3
+}
+
+.type-body {
+    font-size: 1rem;
+    line-height: 1.75
+}
+
+.type-small {
+    font-size: .875rem;
+    line-height: 1.55
+}
+
+.type-overline {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-weight: 800
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums
+}
+
+.container-responsive {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8
+}
+
+.section-pad {
+    padding-block: var(--space-section)
+}
+
+.eyebrow {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-weight: 800;
+    color: var(--color-maroon)
+}
+
+.section-title {
+    font-size: clamp(1.85rem, 3.2vw, 3rem);
+    line-height: 1.14;
+    margin-top: .75rem;
+    font-weight: 800;
+    color: var(--color-ink)
+}
+
+.body-copy {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-slate)
+}
+
+.btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-extrabold text-ink shadow-sm transition hover:brightness-95;
+    background: var(--color-yellow)
+}
+
+.btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border bg-white px-5 py-3 text-base font-bold text-ink transition hover:bg-[#f7f4e9];
+    border-color: var(--color-border)
+}
+
+.btn-dark {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-base font-bold text-white transition hover:bg-white/20
+}
+
+.btn-whatsapp {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-extrabold text-ink shadow-sm transition;
+    background: var(--color-yellow)
+}
+
+.btn-whatsapp:hover {
+    background: var(--color-yellow)
+}
+
+.btn-whatsapp:active {
+    background: var(--color-whatsapp-pressed)
+}
+
+.card {
+    @apply rounded-[var(--radius-card)] border bg-white;
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card)
+}
+
+.nav-link {
+    @apply relative inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-semibold text-ink hover:text-brand-maroon
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: .5rem;
+    right: .5rem;
+    bottom: .28rem;
+    height: 2px;
+    background: var(--color-maroon);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .2s ease
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    transform: scaleX(1)
+}
+
+.mobile-link {
+    @apply flex min-h-12 items-center rounded-xl px-3 py-3 font-semibold text-ink hover:bg-[#f7f4e9]
+}
+
+.icon-button {
+    @apply flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ink
+}
+
+.action-item {
+    @apply mx-0.5 flex min-h-[52px] flex-col items-center justify-center gap-0.5 rounded-lg text-[11px] font-extrabold text-ink
+}
+
+.field {
+    @apply mt-1.5 block min-h-12 w-full rounded-xl border border-[#C5CCD7] bg-white px-3.5 py-3 text-base text-ink placeholder:text-[#647084];
+}
+
+.field:focus {
+    border-color: var(--color-indigo)
+}
+
+.skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-brand-yellow focus:px-4 focus:py-3 focus:font-bold
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--color-maroon);
+    outline-offset: 3px
+}
+
+.brand-pattern {
+    background-image: url('/patterns/pinwheel-pattern.svg');
+    background-position: center;
+    background-size: 210px 210px
+}
+
+.rainbow-divider {
+    height: 3px;
+    background: linear-gradient(90deg, #444791, #0C9AD3, #32B088, #F6C100, #FCA512, #A1282F)
+}
+
+.hero-warm {
+    background: linear-gradient(135deg, #FBFAF7 0%, #FFF9E0 63%, #F7F0CC 100%)
+}
+
+.marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent)
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-move 42s linear infinite
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+    animation-play-state: paused
+}
+
+@keyframes marquee-move {
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+@media(max-width:639px) {
+    .marquee {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        mask-image: none
+    }
+
+    .marquee-track {
+        animation: none
+    }
+
+    .marquee-track>* {
+        scroll-snap-align: start
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important
+    }
+
+    .marquee-track {
+        animation: none
+    }
+}
+
+.gallery-dialog::backdrop {
+    background: rgba(18, 18, 43, .86);
+    backdrop-filter: blur(5px)
+}
+
+@keyframes wa-breathe {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgb(37 211 102 / .20)
+    }
+
+    50% {
+        box-shadow: 0 0 0 9px rgb(37 211 102 / 0)
+    }
+}
+
+.wa-float {
+    animation: wa-breathe 3.5s ease-in-out infinite
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .wa-float {
+        animation: none
+    }
+}

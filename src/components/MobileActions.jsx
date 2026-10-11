@@ -1,0 +1,10 @@
+'use client'
+import {usePathname} from 'next/navigation'
+import Link from 'next/link'
+import {Phone,ClipboardList} from 'lucide-react'
+import {FaWhatsapp} from 'react-icons/fa'
+import config from '@/content/site.config'
+import {services,FLOORING_PATH} from '@/lib/services'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import {whatsappHref} from '@/content/site.config'
+export default function MobileActions(){const path=usePathname();const service=services.find(s=>s.href===path)?.title||(path===FLOORING_PATH?'Industrial Flooring':'Building Materials');const href=path===FLOORING_PATH?'#flooring-quote':path?.startsWith('/services/')?'#quote':'/#quote';return <><WhatsAppButton floating/><nav aria-label="Quick contact actions" className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-brand-border bg-white/95 px-2 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 shadow-[0_-6px_24px_rgba(0,0,0,.08)] backdrop-blur lg:hidden"><a className="action-item" href={`tel:${config.contacts.phones[0].number.replace(/\s/g,'')}`}><Phone size={19} strokeWidth={1.75}/>Call</a><a className="action-item !bg-[#25D366]" target="_blank" rel="noopener noreferrer" href={whatsappHref(`Hi SGPCC, I need a quote for ${service}.`)}><span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#075E54] text-white"><FaWhatsapp size={18} aria-hidden="true"/></span>WhatsApp</a><Link className="action-item !bg-brand-yellow" href={href}><ClipboardList size={19} strokeWidth={1.75}/>Get Quote</Link></nav></>}

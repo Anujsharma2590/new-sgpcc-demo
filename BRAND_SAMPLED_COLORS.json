@@ -1,0 +1,110 @@
+{
+  "image": "logo.png",
+  "resolution": [
+    512,
+    512
+  ],
+  "quantization": "PIL FASTOCTREE palette 26 colours",
+  "dominant": [
+    {
+      "hex": "#EF2832",
+      "pixelCount": 16459
+    },
+    {
+      "hex": "#FCA512",
+      "pixelCount": 14328
+    },
+    {
+      "hex": "#0C9AD3",
+      "pixelCount": 8973
+    },
+    {
+      "hex": "#C82668",
+      "pixelCount": 8905
+    },
+    {
+      "hex": "#9BD424",
+      "pixelCount": 8811
+    },
+    {
+      "hex": "#F86A1C",
+      "pixelCount": 8304
+    },
+    {
+      "hex": "#FEC269",
+      "pixelCount": 7926
+    },
+    {
+      "hex": "#11AA34",
+      "pixelCount": 7555
+    },
+    {
+      "hex": "#444791",
+      "pixelCount": 7389
+    },
+    {
+      "hex": "#32B088",
+      "pixelCount": 7143
+    },
+    {
+      "hex": "#066EAF",
+      "pixelCount": 6982
+    },
+    {
+      "hex": "#FCEC0B",
+      "pixelCount": 6902
+    },
+    {
+      "hex": "#48A8DC",
+      "pixelCount": 6365
+    },
+    {
+      "hex": "#A1282F",
+      "pixelCount": 1990
+    },
+    {
+      "hex": "#539E9B",
+      "pixelCount": 597
+    },
+    {
+      "hex": "#E8DCA2",
+      "pixelCount": 549
+    },
+    {
+      "hex": "#D7A0A6",
+      "pixelCount": 461
+    },
+    {
+      "hex": "#E6B16D",
+      "pixelCount": 427
+    },
+    {
+      "hex": "#A25961",
+      "pixelCount": 334
+    },
+    {
+      "hex": "#26A75E",
+      "pixelCount": 329
+    },
+    {
+      "hex": "#752025",
+      "pixelCount": 321
+    },
+    {
+      "hex": "#AB2F64",
+      "pixelCount": 320
+    },
+    {
+      "hex": "#A7D4E0",
+      "pixelCount": 249
+    },
+    {
+      "hex": "#9AD153",
+      "pixelCount": 213
+    },
+    {
+      "hex": "#E05952",
+      "pixelCount": 209
+    }
+  ]
+}

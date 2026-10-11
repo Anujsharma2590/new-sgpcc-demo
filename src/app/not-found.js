@@ -1,0 +1,3 @@
+import Link from 'next/link'
+import { ArrowLeft, SearchX } from 'lucide-react'
+export default function NotFound(){return <section className="container-responsive flex min-h-[65vh] flex-col items-center justify-center py-16 text-center"><SearchX size={48} className="text-teal-800"/><p className="eyebrow mt-6">404 / Page not found</p><h1 className="section-title">This page isn't in our catalogue.</h1><p className="body-copy mt-4 max-w-xl">The link may have changed. Browse products and services or contact us with what your site needs.</p><Link href="/#services" className="btn-primary mt-7"><ArrowLeft size={18}/>Browse all services</Link></section>}

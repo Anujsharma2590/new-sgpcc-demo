@@ -1,0 +1,8 @@
+'use client'
+import {useState} from 'react'
+import {AnimatePresence,motion,useReducedMotion} from 'motion/react'
+import {ChevronDown} from 'lucide-react'
+export default function FAQ({items,id='faq',title='Frequently asked questions',description='Useful answers before you enquire.',dark=false}){
+ const [active,setActive]=useState(-1);const reduce=useReducedMotion()
+ return <section id={id} aria-labelledby={`${id}-heading`} className={`section-pad ${dark?'bg-canvas':'bg-white'}`}><div className="container-responsive grid gap-8 lg:grid-cols-[.75fr_1.25fr]"><div><p className="eyebrow">Answers at a glance</p><h2 id={`${id}-heading`} className="section-title">{title}</h2><p className="body-copy mt-4">{description}</p></div><div className="space-y-3">{items.map((item,i)=><div key={item.q} className="card overflow-hidden"><h3><button type="button" className="flex min-h-[60px] w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-ink" aria-expanded={active===i} aria-controls={`${id}-answer-${i}`} id={`${id}-q-${i}`} onClick={()=>setActive(v=>v===i?-1:i)}>{item.q}<ChevronDown size={20} className={`shrink-0 text-brand-maroon transition-transform ${active===i?'rotate-180':''}`}/></button></h3><AnimatePresence initial={false}>{active===i&&<motion.div id={`${id}-answer-${i}`} role="region" aria-labelledby={`${id}-q-${i}`} initial={reduce?false:{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={reduce?{opacity:0}:{height:0,opacity:0}} transition={{duration:.23}} className="overflow-hidden"><p className="px-5 pb-5 text-base leading-7 text-slate-copy">{item.a}</p></motion.div>}</AnimatePresence></div>)}</div></div></section>
+}

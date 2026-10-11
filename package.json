@@ -1,0 +1,41 @@
+{
+  "name": "spfcc-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next dev -p 3001",
+    "build": "next build",
+    "prod": "next start",
+    "lint": "eslint",
+    "dev": "next dev -p 3001",
+    "qa:static": "node scripts/verify-static.mjs && node scripts/verify-icons.mjs",
+    "qa:icons": "node scripts/verify-icons.mjs"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.26.0",
+    "next": "16.2.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "motion": "^12.23.0",
+    "react-icons": "^5.5.0",
+    "embla-carousel-react": "^8.6.0",
+    "react-hook-form": "^7.60.0",
+    "zod": "^4.0.0",
+    "@hookform/resolvers": "^5.2.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.0",
+    "sonner": "^2.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^10",
+    "eslint-config-next": "16.2.11",
+    "tailwindcss": "^4",
+    "typescript": "^5.9.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}

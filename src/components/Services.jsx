@@ -1,0 +1,4 @@
+import {services} from '@/lib/services'
+import ServiceCard from '@/components/ServiceCard'
+import Reveal from '@/components/Reveal'
+export default function Services(){return <section id="services" className="section-pad bg-canvas" aria-labelledby="services-title"><div className="container-responsive"><p className="eyebrow">What we supply</p><div className="mb-9 flex flex-wrap items-end justify-between gap-5"><div><h2 id="services-title" className="section-title">Products & services</h2><p className="body-copy mt-4 max-w-2xl">Explore product categories, see the applications and send us your project requirements.</p></div><p className="text-sm font-semibold text-brand-maroon">Industrial & commercial orders</p></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{services.map((service,i)=><Reveal key={service.slug} delay={Math.min(i*.045,.18)} className={service.featured?'lg:col-span-2':''}><ServiceCard service={service}/></Reveal>)}</div></div></section>}
