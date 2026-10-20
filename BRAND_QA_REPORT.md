@@ -20,6 +20,10 @@
 | white #FFFFFF | success #17633C | 7.28:1 | PASS |
 | white #FFFFFF | error #A62232 | 7.25:1 | PASS |
 
+
+
+
+
 White on WhatsApp green fails (1.98:1). UI uses dark indigo labels on the green button and places the official white WhatsApp glyph over a small dark-green #075E54 circle. The logo itself is an image and is not subject to ordinary text contrast rules.
 
 ## Approximate UltraTech partner-section colours
