@@ -16,6 +16,14 @@ Validation completed:
 The historical checklist below records broader launch work; browser checks above do not imply a Lighthouse audit, verified map coordinates or verified business authorisations.
 
 
+## Contact and map revision ? 20 October 2026
+
+Removed the public map TODO. All four office cards now provide address-based Google Maps directions, with semantic addresses, accessible contact links and an expanded/collapsed map control. The overview retains the original approximate coordinates and explicitly describes them as city locations; exact office coordinates have not been verified. Navigation uses full postal addresses instead of overview coordinates.
+
+The Leaflet map now uses circle markers without external icon downloads, validates coordinate ranges, constructs popup content with DOM text nodes, supports keyboard activation, cleans up on hide/unmount, resizes with its container and displays a useful message when loading or map tiles fail.
+
+Validation: production build PASS; browser checks PASS for all four directions URLs, address cards, 360/768/1440px contact layouts, map loading, keyboard popups, hide/reopen, simulated tile failure and continuing availability of directions links. No browser runtime errors observed. Google Maps URL reference: https://developers.google.com/maps/documentation/urls/get-started#directions.
+
 ## Sampling method
 512 × 512 PNG supplied by user. Measured RGB values using Pillow, FASTOCTREE cluster quantisation, with direct sampled pixel spot checks. Original extracted clusters: Indigo #444791; maroon #A1282F; crimson #EF2832; magenta #C82668; orange #FCA512; amber #FEC269; bright yellow #FCEC0B; lime #9BD424; green #11AA34; teal #32B088; sky blue #0C9AD3; royal blue #066EAF. Theme ink #22254E is a deliberately darkened derivative of sampled logo indigo, not an exact logo pixel.
 

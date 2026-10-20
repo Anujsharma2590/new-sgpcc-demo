@@ -37,6 +37,9 @@ export default function OfficesMap({markers}) {
       })
       tiles.addTo(map)
 
+      if (validMarkers.length === 1) map.setView([validMarkers[0].lat, validMarkers[0].lng], 9)
+      else map.fitBounds(L.latLngBounds(validMarkers.map(marker => [marker.lat, marker.lng])), {padding: [36, 36], maxZoom: 9})
+
       validMarkers.forEach(marker => {
         // DOM text nodes keep office data out of interpreted popup HTML.
         const popup = document.createElement('div')
@@ -74,8 +77,6 @@ export default function OfficesMap({markers}) {
         }
       })
 
-      if (validMarkers.length === 1) map.setView([validMarkers[0].lat, validMarkers[0].lng], 9)
-      else map.fitBounds(L.latLngBounds(validMarkers.map(marker => [marker.lat, marker.lng])), {padding: [36, 36], maxZoom: 9})
 
       if (typeof ResizeObserver !== 'undefined') {
         resizeObserver = new ResizeObserver(() => map.invalidateSize())
