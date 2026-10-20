@@ -1,6 +1,53 @@
-'use client'
+﻿'use client'
 import useEmblaCarousel from 'embla-carousel-react'
-import {Star,ShieldCheck,Info} from 'lucide-react'
-import {testimonials,publishedTestimonials} from '@/data/testimonials'
-const showSample=process.env.NODE_ENV!=='production'
-export default function Testimonials(){const [ref]=useEmblaCarousel({align:'start',containScroll:'trimSnaps',breakpoints:{'(min-width: 768px)':{active:false}}});const items=showSample?testimonials:publishedTestimonials;if(!items.length)return null;return <section className="section-pad bg-[#F7F6F2]" aria-labelledby="testimonials-title"><div className="container-responsive"><p className="eyebrow">Client feedback</p><h2 id="testimonials-title" className="section-title">What clients say</h2>{showSample&&<p className="mt-4 flex items-center gap-2 rounded-xl border border-[#E9CF6A] bg-[#FFF7DB] p-3 text-sm font-semibold text-ink"><Info size={19}/>Development preview only: sample cards are hidden automatically on the live production site.</p>}<div ref={ref} className="mt-8 overflow-hidden"><div className="-ml-4 flex touch-pan-y md:grid md:grid-cols-3 md:gap-5">{items.map(t=><div key={t.id} className="min-w-0 flex-[0_0_88%] pl-4 sm:flex-[0_0_55%] md:pl-0"><article className="card relative h-full p-6">{t.placeholder&&<span className="absolute right-4 top-4 rounded-full bg-brand-yellow px-3 py-1 text-xs font-extrabold">SAMPLE</span>}{typeof t.rating==='number'&&<div role="img" aria-label={`${t.rating} of 5 stars`} className="flex gap-1">{Array.from({length:5},(_,i)=><Star key={i} size={16} fill={i<t.rating?'#F6C100':'none'} color="#8D6B00"/>)}</div>}<blockquote className="mt-5 text-base leading-7 text-ink">“{t.quote}”</blockquote><p className="mt-5 text-sm font-bold">{t.name}</p><p className="text-sm text-slate-copy">{t.role} · {t.company}</p><p className="mt-3 inline-flex rounded-full bg-[#F5F1E8] px-3 py-1.5 text-xs font-bold text-ink">{t.project}</p>{t.verifiedProject&&<p className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#17633C]"><ShieldCheck size={15}/>Verified project</p>}</article></div>)}</div></div></div></section>}
+import {ArrowLeft, ArrowRight, Quote, ShieldCheck, Star} from 'lucide-react'
+import {testimonials, publishedTestimonials} from '@/data/testimonials'
+
+export default function Testimonials() {
+  const [ref, carousel] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+    breakpoints: {'(min-width: 768px)': {active: false}},
+  })
+  const hasClientFeedback = publishedTestimonials.length > 0
+  const items = hasClientFeedback ? publishedTestimonials : testimonials
+  if (!items.length) return null
+
+  return <section className="section-pad bg-[#F7F6F2]" aria-labelledby="testimonials-title">
+    <div className="container-responsive">
+      <div className="flex items-end justify-between gap-5">
+        <div>
+          <p className="eyebrow">Project Perspectives</p>
+          <h2 id="testimonials-title" className="section-title">{hasClientFeedback ? 'What Clients Say' : 'What Project Teams Value'}</h2>
+          <p className="body-copy mt-4 max-w-2xl">{hasClientFeedback
+            ? 'Feedback from the people behind the projects we support.'
+            : 'Illustrative perspectives on material supply and industrial flooring, rather than actual client reviews.'}</p>
+        </div>
+        {items.length > 1 && <div className="hidden shrink-0 gap-2 sm:flex md:hidden">
+          <button type="button" className="icon-button border border-brand-border bg-white hover:bg-[#FFF3CB]" onClick={() => carousel?.scrollPrev()} aria-label="Previous feedback card"><ArrowLeft size={19}/></button>
+          <button type="button" className="icon-button border border-brand-border bg-white hover:bg-[#FFF3CB]" onClick={() => carousel?.scrollNext()} aria-label="Next feedback card"><ArrowRight size={19}/></button>
+        </div>}
+      </div>
+      <div ref={ref} className="mt-8 overflow-hidden">
+        <div className="-ml-4 flex touch-pan-y md:ml-0 md:grid md:grid-cols-3 md:gap-5">
+          {items.map((item, index) => <div key={item.id} className="min-w-0 flex-[0_0_88%] pl-4 sm:flex-[0_0_55%] md:pl-0">
+            <article className="card flex h-full flex-col border-t-4 p-6 sm:p-7" style={{borderTopColor: ['#F6C100', '#444791', '#32B088'][index % 3]}}>
+              <Quote size={30} strokeWidth={1.5} className="text-brand-maroon" aria-hidden="true"/>
+              {!item.placeholder && typeof item.rating === 'number' && <div role="img" aria-label={`${item.rating} of 5 stars`} className="mt-4 flex gap-1">
+                {Array.from({length: 5}, (_, i) => <Star key={i} size={16} fill={i < item.rating ? '#F6C100' : 'none'} color="#8D6B00"/>)}
+              </div>}
+              <blockquote className="mt-5 flex-1 text-lg leading-8 text-ink">&ldquo;{item.quote}&rdquo;</blockquote>
+              <div className="mt-6 border-t border-brand-border pt-5">
+                <p className="text-base font-bold text-ink">{item.name}</p>
+                <p className="mt-1 text-sm text-slate-copy">{[item.role, item.company].filter(Boolean).join(' · ')}</p>
+                <p className="mt-4 inline-flex rounded-full bg-[#F5F1E8] px-3 py-2 text-xs font-bold text-ink">{item.project}</p>
+                {!item.placeholder && item.verifiedProject && <p className="mt-3 flex items-center gap-1 text-xs font-bold text-[#17633C]"><ShieldCheck size={15}/>Verified Project</p>}
+              </div>
+            </article>
+          </div>)}
+        </div>
+      </div>
+      <p className="mt-4 text-sm text-slate-copy md:hidden">Swipe to Explore More Perspectives <span aria-hidden="true">→</span></p>
+    </div>
+  </section>
+}

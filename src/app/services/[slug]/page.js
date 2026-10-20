@@ -2,11 +2,11 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import config from '@/content/site.config'
-import { getService, services } from '@/content/services'
+import { getService, allServices } from '@/content/services'
 import StockImage from '@/components/ui/StockImage'
 import QuoteSection from '@/components/QuoteSection'
 
-export function generateStaticParams() { return services.filter((s)=>s.slug!=='flooring').map((service) => ({slug:service.slug})) }
+export function generateStaticParams() { return allServices.filter((s)=>s.slug!=='flooring').map((service) => ({slug:service.slug})) }
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const s = getService(slug)

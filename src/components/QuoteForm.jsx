@@ -7,7 +7,7 @@ import {toast} from 'sonner'
 import {ArrowUpRight,Check,Mail} from 'lucide-react'
 import {FaWhatsapp} from 'react-icons/fa'
 import config,{whatsappHref} from '@/content/site.config'
-import {services} from '@/lib/services'
+import {allServices as services} from '@/lib/services'
 const schema=z.object({name:z.string().trim().min(2,'Enter your name').max(100),phone:z.string().trim().refine(s=>s.replace(/\D/g,'').length>=10&&s.replace(/\D/g,'').length<=15,'Enter a valid phone number'),city:z.string().trim().min(2,'Enter the project city').max(80),service:z.string().min(1,'Choose a service'),quantity:z.string().max(80).optional(),message:z.string().max(1200).optional()})
 /** WhatsApp handoff only. No data is stored and no request is claimed as sent. */
 export default function QuoteForm({defaultService='',compact=false}){

@@ -1,5 +1,21 @@
 # SGPCC visual identity and QA notes
 
+## Literature revisions ? 20 October 2026
+
+Implemented the six-page literature revision in `src/`: title-case header tagline, three coloured statistics cards, ten prioritised service categories, clickable brand logos and the requested dealer/distributor heading, revised connected process cards and quote CTA, Manrope headings with Source Sans 3 body text, twelve supplied FAQs, updated locations heading, a major service areas section and four distinct location pages with canonical metadata and sitemap entries. Existing insulation and flooring routes remain available.
+
+Restored the UltraTech yellow-gradient design from the reference supplied in chat, using the existing Embla library for autoplay, previous/next controls and pagination. Autoplay pauses for interaction and respects reduced motion.
+
+Validation completed:
+- `npm run build`: PASS, including all service and location routes.
+- `npm run qa:static`: PASS, including favicon checks. Updated the service-count expectation and whitespace-sensitive checks in the existing QA script.
+- Production browser checks in Chrome: PASS for service order, twelve FAQs and expansion, brand links, carousel arrows/dots/autoplay, reduced-motion behaviour, mobile menu/Escape, location responses/canonical URLs/JSON-LD, new service routes, retained insulation route and sitemap entries.
+- Homepage overflow checks: PASS at 360, 390, 768, 1024 and 1440px. Reviewed mobile UltraTech and desktop FAQ screenshots. No browser runtime errors in the final interaction run.
+- `npm run lint`: BLOCKED by the pre-existing FlatCompat configuration (circular config serialization). A separate run with the native Next flat config also encountered the installed ESLint/parser incompatibility (`scopeManager.addGlobals is not a function`). Lint is not claimed as passed.
+
+The historical checklist below records broader launch work; browser checks above do not imply a Lighthouse audit, verified map coordinates or verified business authorisations.
+
+
 ## Sampling method
 512 × 512 PNG supplied by user. Measured RGB values using Pillow, FASTOCTREE cluster quantisation, with direct sampled pixel spot checks. Original extracted clusters: Indigo #444791; maroon #A1282F; crimson #EF2832; magenta #C82668; orange #FCA512; amber #FEC269; bright yellow #FCEC0B; lime #9BD424; green #11AA34; teal #32B088; sky blue #0C9AD3; royal blue #066EAF. Theme ink #22254E is a deliberately darkened derivative of sampled logo indigo, not an exact logo pixel.
 
@@ -30,7 +46,7 @@ White on WhatsApp green fails (1.98:1). UI uses dark indigo labels on the green 
 Yellow #FFE100 and dark blue #162C65 are design approximations based on the official brand’s yellow/dark-blue visual treatment, *not* official published RGB specifications. UltraTech logo and photography are existing local assets, not recreated. Official reference: https://www.ultratechcement.com/corporate/media/press-kit and https://www.ultratechcement.com/content/dam/ultratechcementwebsite/pdf/media/press-kit/ultratech-name-and-logo-usage-guidelines.pdf.
 
 ## Type scale
-Plus Jakarta Sans headings; Inter body; Noto Sans Devanagari for Hindi. Fonts load through Next font with swap. Display clamp(2.65rem,5.5vw,5rem), H1 clamp(2.25rem,4.6vw,4.25rem), H2 clamp(1.85rem,3.2vw,3rem), H3 clamp(1.35rem,2vw,1.75rem), H4 clamp(1.125rem,1.5vw,1.375rem); body 1rem, small .875rem, overline .75rem.
+Manrope headings; Source Sans 3 body; Noto Sans Devanagari for Hindi. Fonts load through Next font with swap. Display clamp(2.65rem,5.5vw,5rem), H1 clamp(2.25rem,4.6vw,4.25rem), H2 clamp(1.85rem,3.2vw,3rem), H3 clamp(1.35rem,2vw,1.75rem), H4 clamp(1.125rem,1.5vw,1.375rem); body 1rem, small .875rem, overline .75rem.
 
 ## Manual browser QA, not yet tested
 - [ ] `npm install`; `npm run build`; `npm run lint`.
